@@ -1,4 +1,4 @@
 # my ignorefile
 
 .DS_Store
-*.usr
+*.user
