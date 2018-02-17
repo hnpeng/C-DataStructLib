@@ -1,3 +1,5 @@
-HEADERS += $$PWD/SeqListCase.h
+HEADERS += $$PWD/SeqListCase.h \
+    $$PWD/LinkListCase.h
 
-SOURCES += $$PWD/SeqListCase.c
+SOURCES += $$PWD/SeqListCase.c \
+    $$PWD/LinkListCase.c
