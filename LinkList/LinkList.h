@@ -20,4 +20,6 @@ LinkListNode* LinkList_Delete(LinkList* list, int pos);
 
 void LinkList_Reverse(LinkList* list);
 
+LinkListNode* LinkList_GetMidNode(LinkList* list);
+
 #endif // LINKLIST_H
