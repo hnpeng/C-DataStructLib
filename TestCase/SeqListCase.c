@@ -5,12 +5,13 @@
 
 void seqListCase()
 {
-    SeqList* list = SeqList_Create(5);
+    SeqList* list = SeqList_Create(6);
     int v1 = 1;
     int v2 = 2;
     int v3 = 3;
     int v4 = 4;
     int v5 = 5;
+    int v6 = 6;
     int i;
 
     SeqList_Insert(list, &v1, 0);
@@ -18,8 +19,11 @@ void seqListCase()
     SeqList_Insert(list, &v3, 0);
     SeqList_Insert(list, &v4, 0);
     SeqList_Insert(list, &v5, 0);
+    SeqList_Insert(list, &v6, 0);
 
 //    SeqList_Clear(list);
+
+//    SeqList_Reverse(list);
 
     for (i=0; i<SeqList_Length(list); i++) {
         int *e = (int*)SeqList_Get(list, i);

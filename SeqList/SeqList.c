@@ -75,7 +75,7 @@ int SeqList_Insert(SeqList* list, SeqListNode* node, int pos)
             sList->node[i] = sList->node[i-1];
         }
 
-        sList->node[i] = node;
+        sList->node[i] = (TSeqListNode)node;
         sList->length++;
     }
 
@@ -89,7 +89,7 @@ SeqListNode* SeqList_Delete(SeqList* list, int pos)
     int i;
 
     if (sList != NULL && 0 <= pos && pos < sList->length) {
-        ret = sList->node[pos];
+        ret = (SeqListNode*)sList->node[pos];
 
         for (i=pos+1; i<sList->length; i++) {
             sList->node[i-1] = sList->node[i];
@@ -107,8 +107,24 @@ SeqListNode* SeqList_Get(SeqList* list, int pos)
     TSeqList* sList = (TSeqList*)list;
 
     if (sList != NULL && 0 <= pos && pos < sList->length) {
-        ret = sList->node[pos];
+        ret = (SeqListNode*)sList->node[pos];
     }
 
     return ret;
+}
+
+void SeqList_Reverse(SeqList *list)
+{
+   TSeqList* sList = (TSeqList*)list;
+
+   if (sList != NULL) {
+       int i;
+       TSeqListNode temp;
+
+       for (i=0; i<(sList->length/2); i++) {
+           temp = sList->node[i];
+           sList->node[i] = sList->node[sList->length - 1 - i];
+           sList->node[sList->length - 1 - i] = temp;
+       }
+   }
 }

@@ -5,8 +5,8 @@
 
 int main()
 {
-//    seqListCase();
-    LinkListCase();
+    seqListCase();
+//    LinkListCase();
     printf("Hello World!\n");
     return 0;
 }

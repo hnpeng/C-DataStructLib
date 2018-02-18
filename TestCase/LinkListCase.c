@@ -18,6 +18,7 @@ void LinkListCase()
     LinkList_Insert(list, &v4, 10);
     LinkList_Insert(list, &v5, 10);
 
+    LinkList_Reverse(list);
 //    LinkList_Clear(list);
     printf("length = %d\n", LinkList_Length(list));
 

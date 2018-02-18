@@ -126,8 +126,51 @@ LinkListNode* LinkList_Delete(LinkList* list, int pos)
         sList->length--;
 
         ret = tagNode->pData;
-//        free(tagNode);
+        free(tagNode);
     }
 
     return ret;
+}
+
+//void LinkList_Reverse(LinkList *list)
+//{
+//    TLinkList* sList = (TLinkList*)list;
+
+//    if (sList != NULL) {
+//        TLinkListNode* curNode = sList->headNode;
+//        TLinkListNode* preNode = NULL;
+
+//        while (curNode != NULL) {
+//            TLinkListNode* nextNode = curNode->next;
+//            curNode->next = preNode;
+//            preNode = curNode;
+//            curNode = nextNode;
+//        }
+
+//        sList->headNode = preNode;
+//    }
+//}
+
+TLinkListNode* recursiveReverse(TLinkListNode* node)
+{
+    TLinkListNode* ret = node;
+
+    if (node->next != NULL) {
+        TLinkListNode* nextNode = node->next;
+        ret = recursiveReverse(nextNode);
+        nextNode->next = node;
+        node->next = NULL;
+    }
+
+    return ret;
+}
+
+void LinkList_Reverse(LinkList* list)
+{
+    TLinkList* sList = (TLinkList*)list;
+    if (sList != NULL) {
+        TLinkListNode* headNode = sList->headNode;
+
+        sList->headNode = recursiveReverse(headNode);
+    }
 }

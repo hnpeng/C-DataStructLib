@@ -20,5 +20,6 @@ int SeqList_Length(SeqList* list);
 
 int SeqList_Capacity(SeqList* list);
 
+void SeqList_Reverse(SeqList* list);
 
 #endif // SEQLIST_H
