@@ -14,6 +14,7 @@ typedef struct
 typedef struct
 {
     int capacity;
+    int nullHeadNode;
     TStaticListNode node[];
 }TStaticList;
 
@@ -25,11 +26,12 @@ StaticList *StaticList_Create(int capacity)
         int i;
 
         ret->capacity = capacity;
+        ret->nullHeadNode = 1;
         ret->node[0].next = 0;
         ret->node[0].data = 0;
 
         for (i=1; i<capacity+1; i++) {
-            ret->node[i].next = AVAILABLE;
+            ret->node[i].next = i+1;
         }
     }
 
@@ -46,9 +48,10 @@ void StaticList_Clear(StaticList *list)
 
         sList->node[0].data = 0;
         sList->node[0].next = 0;
+        sList->nullHeadNode = 1;
 
         for (i=1; i<sList->capacity+1; i++) {
-            sList->node[i].next = AVAILABLE;
+            sList->node[i].next = i + 1;
         }
     }
 }
@@ -93,17 +96,12 @@ int StaticList_Insert(StaticList *list, StaticListNode *node, int pos)
     if (ret) {
         int i;
         int current = 0;
-        int availablePos = 0;
+        int availablePos = sList->nullHeadNode;
+
+        sList->nullHeadNode = sList->node[availablePos].next;
 
         for (i=0; i<pos && sList->node[current].next != 0; i++) {
             current = sList->node[current].next;
-        }
-
-        for (i=1; i<sList->capacity+1; i++) {
-            if (sList->node[i].next == AVAILABLE) {
-                availablePos = i;
-                break;
-            }
         }
 
         sList->node[availablePos].next = sList->node[current].next;
@@ -122,7 +120,7 @@ StaticListNode *StaticList_Get(StaticList *list, int pos)
     StaticListNode* ret = NULL;
     TStaticList* sList = (TStaticList*)list;
 
-    if (sList != NULL && 0 <= pos && pos < sList->capacity) {
+    if (sList != NULL && 0 <= pos && pos < (int)sList->node[0].data) {
         int i;
         int current = 0;
         int tagIndex = 0;
@@ -143,7 +141,7 @@ StaticListNode *StaticList_Delete(StaticList *list, int pos)
     StaticListNode* ret = NULL;
     TStaticList* sList = (TStaticList*)list;
 
-    if (sList != NULL && 0 <= pos && pos < sList->capacity) {
+    if (sList != NULL && 0 <= pos && pos < (int)sList->node[0].data) {
         int current = 0;
         int tagIndex = 0;
         int i;
@@ -156,7 +154,8 @@ StaticListNode *StaticList_Delete(StaticList *list, int pos)
         sList->node[current].next = sList->node[tagIndex].next;
 
         ret = (StaticListNode*)sList->node[tagIndex].data;
-        sList->node[tagIndex].next = AVAILABLE;
+        sList->node[tagIndex].next = sList->nullHeadNode;
+        sList->nullHeadNode = tagIndex;
         sList->node[0].data--;
     }
 

@@ -174,3 +174,27 @@ void LinkList_Reverse(LinkList* list)
         sList->headNode = recursiveReverse(headNode);
     }
 }
+
+LinkListNode *LinkList_GetMidNode(LinkList *list)
+{
+    LinkListNode* ret = NULL;
+    TLinkList* sList = (TLinkList*)list;
+
+    if (sList != NULL) {
+        TLinkListNode* pForward = sList->headNode;
+        TLinkListNode* pSlowForward = sList->headNode;
+        int count = 0;
+
+        while (pForward != NULL) {
+            pForward = pForward->next;
+            count++;
+            if (count % 2 == 0) {
+                pSlowForward = pSlowForward->next;
+            }
+        }
+
+        ret = pSlowForward->pData;
+    }
+
+    return ret;
+}
