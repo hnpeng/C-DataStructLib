@@ -121,17 +121,16 @@ CircleListNodeData* CircleList_Delete(CircleList* list, int pos)
     TCircleList* sList = (TCircleList*)list;
 
     if (sList != NULL && 0 <= pos && sList->length > 0) {
-        CircleListNode* first = sList->header.next;
-        CircleListNode* last = NULL;
         CircleListNode* current = (CircleListNode*)sList;
         CircleListNode* object = NULL;
+        CircleListNode* first = sList->header.next;
+        CircleListNode* last = (CircleListNode*)sList;
         int i;
 
-        for (i=0; i<sList->length; i++) {
-            current = current->next;
-        }
 
-        last = current->next;
+        for (i=0; i<sList->length; i++) {
+            last = last->next;
+        }
 
         current = (CircleListNode*)sList;
 
@@ -142,21 +141,22 @@ CircleListNodeData* CircleList_Delete(CircleList* list, int pos)
         object = current->next;
         current->next = object->next;
         ret = (CircleListNode*)((TCircleListNode*)object)->data;
-        sList->length--;
 
-        if (sList->length == 0) {
+        if (sList->length == 1) {
             sList->header.next = NULL;
             sList->slider = NULL;
         } else {
-            if (sList->slider == object) {
-                sList->slider = object->next;
-            }
-
             if (object == first) {
                 last->next = object->next;
                 sList->header.next = object->next;
             }
+
+            if (sList->slider == object) {
+                sList->slider = object->next;
+            }
         }
+
+        sList->length--;
 
         free(object);
     }

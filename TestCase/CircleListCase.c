@@ -54,19 +54,14 @@ void CircleListCase()
     printf("reset = %d\n", *reset);
     int* toDel = NULL;
 
-    for (int i=0; i<20; i++) {
-        toDel = (int*)CircleList_Next(list);
+    while (CircleList_Length(list) > 0) {
+        CircleList_Next(list);
+        CircleList_Next(list);
+        toDel = (int*)CircleList_Current(list);
+        CircleList_DeleteNode(list, toDel);
+
         printf("toDel = %d\n", *toDel);
     }
-
-//    while (CircleList_Length(list) > 0) {
-//        CircleList_Next(list);
-//        CircleList_Next(list);
-//        toDel = (int*)CircleList_Current(list);
-//        CircleList_DeleteNode(list, toDel);
-
-//        printf("toDel = %d\n", *toDel);
-//    }
 
 
     CircleList_Destroy(list);
