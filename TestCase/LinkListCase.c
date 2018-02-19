@@ -21,7 +21,14 @@ void LinkListCase()
     LinkList_Insert(list, &v6, 10);
 
 //    LinkList_Reverse(list);
-//    LinkList_Clear(list);
+    LinkList_Clear(list);
+
+    LinkList_Insert(list, &v1, 10);
+    LinkList_Insert(list, &v2, 10);
+    LinkList_Insert(list, &v3, 10);
+    LinkList_Insert(list, &v4, 10);
+    LinkList_Insert(list, &v5, 10);
+    LinkList_Insert(list, &v6, 10);
     printf("length = %d\n", LinkList_Length(list));
 
     for (i=0; i<LinkList_Length(list); i++) {
@@ -33,10 +40,10 @@ void LinkListCase()
     printf("mid = %d\n", *v);
 
 
-    while (LinkList_Length(list) > 0) {
-        int* e = (int*) LinkList_Delete(list, 0);
-        printf("delete = %d\n", *e);
-    }
+//    while (LinkList_Length(list) > 0) {
+//        int* e = (int*) LinkList_Delete(list, 0);
+//        printf("delete = %d\n", *e);
+//    }
 
     printf("length = %d\n", LinkList_Length(list));
 

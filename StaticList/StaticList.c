@@ -1,8 +1,6 @@
 #include "StaticList.h"
 #include <stdlib.h>
 
-#define AVAILABLE -1
-
 typedef void* Data;
 
 typedef struct
