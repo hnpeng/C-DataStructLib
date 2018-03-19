@@ -12,12 +12,18 @@ typedef struct __tag_linkListNode TLinkListNode;
 struct __tag_linkListNode
 {
     TLinkListNode* next;
-    LinkListNode* pData;
 };
 
 typedef struct
 {
-    TLinkListNode* headNode;
+    TLinkListNode tNode;
+    void* value;
+}TNode;
+
+
+typedef struct
+{
+    TLinkListNode headNode;
     int length;
 }TLinkList;
 
@@ -27,7 +33,7 @@ LinkList* LinkList_Create()
 
     if (ret) {
         ret->length = 0;
-        ret->headNode = NULL;
+        ret->headNode.next = NULL;
     }
 
     return ret;
@@ -65,24 +71,26 @@ int LinkList_Length(LinkList* list)
 int LinkList_Insert(LinkList* list, LinkListNode* node, int pos)
 {
     TLinkList* sList = (TLinkList*)list;
-    int ret = sList != NULL && node != NULL;
-    int i;
-
-    ret = ret && 0 <= pos;
+    int ret = sList != NULL && node != NULL && pos >= 0;
 
     if (ret) {
-        TLinkListNode* current = (TLinkListNode*)sList;
+        TNode* newNode = (TNode*)malloc(sizeof(TNode));
+        ret = newNode != NULL;
 
-        for (i = 0; i<pos && current->next != NULL; i++) {
-            current = current->next;
+        if (ret) {
+            TLinkListNode* current = (TLinkListNode*)sList;
+            int i;
+
+            for (i = 0; i<pos && current->next != NULL; i++) {
+                current = current->next;
+            }
+
+            newNode->value = node;
+            newNode->tNode.next = current->next;
+            current->next = (TLinkListNode*)newNode;
+
+            sList->length++;
         }
-
-        TLinkListNode* newNode = (TLinkListNode*)malloc(sizeof(TLinkListNode));
-        newNode->pData = node;
-        newNode->next = current->next;
-        current->next = newNode;
-
-        sList->length++;
     }
 
     return ret;
@@ -96,12 +104,14 @@ LinkListNode* LinkList_Get(LinkList* list, int pos)
 
     if (sList != NULL && 0 <= pos && pos < sList->length) {
         TLinkListNode* current = (TLinkListNode*)sList;
+        TNode* targetNode = NULL;
 
         for (i=0; i<pos; i++) {
             current = current->next;
         }
 
-        ret = current->next->pData;
+        targetNode = (TNode*)current->next;
+        ret = targetNode->value;
     }
 
     return ret;
@@ -115,18 +125,19 @@ LinkListNode* LinkList_Delete(LinkList* list, int pos)
 
     if (sList != NULL && 0 <= pos && pos < sList->length) {
         TLinkListNode* current = (TLinkListNode*)sList;
-        TLinkListNode* tagNode = NULL;
+        TNode* targetNode = NULL;
 
         for (i=0; i<pos; i++) {
             current = current->next;
         }
 
-        tagNode = current->next;
-        current->next = tagNode->next;
-        sList->length--;
+        targetNode = (TNode*)current->next;
+        current->next = targetNode->tNode.next;
+        ret = targetNode->value;
 
-        ret = tagNode->pData;
-        free(tagNode);
+        free(targetNode);
+
+        sList->length--;
     }
 
     return ret;
@@ -169,9 +180,9 @@ void LinkList_Reverse(LinkList* list)
 {
     TLinkList* sList = (TLinkList*)list;
     if (sList != NULL) {
-        TLinkListNode* headNode = sList->headNode;
+        TLinkListNode* headNode = sList->headNode.next;
 
-        sList->headNode = recursiveReverse(headNode);
+        sList->headNode.next = recursiveReverse(headNode);
     }
 }
 
@@ -181,8 +192,8 @@ LinkListNode *LinkList_GetMidNode(LinkList *list)
     TLinkList* sList = (TLinkList*)list;
 
     if (sList != NULL) {
-        TLinkListNode* pForward = sList->headNode;
-        TLinkListNode* pSlowForward = sList->headNode;
+        TLinkListNode* pForward = sList->headNode.next;
+        TLinkListNode* pSlowForward = sList->headNode.next;
         int count = 0;
 
         while (pForward != NULL) {
@@ -193,7 +204,7 @@ LinkListNode *LinkList_GetMidNode(LinkList *list)
             }
         }
 
-        ret = pSlowForward->pData;
+        ret = ((TNode*)pSlowForward)->value;
     }
 
     return ret;

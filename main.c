@@ -8,9 +8,9 @@
 int main()
 {
 //    seqListCase();
-//    LinkListCase();
+    LinkListCase();
 //    StaticListCase();
-    CircleListCase();
+//    CircleListCase();
     printf("Hello World!\n");
     return 0;
 }
