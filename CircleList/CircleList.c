@@ -181,7 +181,7 @@ CircleListNodeData* CircleList_Next(CircleList* list)
     CircleListNodeData* ret = NULL;
     TCircleList* sList = (TCircleList*)list;
 
-    if (sList != NULL) {
+    if (sList != NULL && sList->slider != NULL) {
         ret = (CircleListNodeData*)((TCircleListNode*)sList->slider)->data;
         sList->slider = sList->slider->next;
     }
@@ -212,11 +212,11 @@ CircleListNodeData* CircleList_DeleteNode(CircleList* list, CircleListNodeData* 
 
         for (i=0; i<sList->length; i++) {
             if (node == CircleList_Get(list, i)) {
+                ret = CircleList_Delete(list, i);
                 break;
             }
         }
 
-        ret = CircleList_Delete(list, i);
     }
 
     return ret;
