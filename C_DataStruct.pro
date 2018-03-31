@@ -9,6 +9,8 @@ include(LinkList/LinkList.pri)
 include(StaticList/StaticList.pri)
 include(CircleList/CircleList.pri)
 include(DLinkList/DLinkList.pri)
+include(SeqStack/SeqStack.pri)
+include(LinkStack/LinkStack.pri)
 
 SOURCES += main.c
 
