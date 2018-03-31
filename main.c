@@ -5,6 +5,8 @@
 #include "TestCase/StaticListCase.h"
 #include "TestCase/CircleListCase.h"
 #include "TestCase/DLinkListCase.h"
+#include "TestCase/SeqStackCase.h"
+#include "TestCase/LinkStackCase.h"
 
 int main()
 {
@@ -12,7 +14,9 @@ int main()
 //    LinkListCase();
 //    StaticListCase();
 //    CircleListCase();
-    DLinkListCase();
+//    DLinkListCase();
+//    SeqStackCase();
+    LinkStackCase();
     printf("Hello World!\n");
     return 0;
 }
