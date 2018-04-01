@@ -16,7 +16,7 @@ My C language DataStruct LIB
   - 节点的获取
   - 顺序表的长度
   - 顺序表的容量
-  - 顺序表的清空
+  - 顺序表的清空
   - 顺序表的销毁
   - 顺序表的反转
 - LinkList（单链表）
@@ -79,3 +79,11 @@ My C language DataStruct LIB
   - 出栈
   - 获取栈顶元素
   - 获取栈大小
+- LittleAlgorithm （递归问题求解）
+  - 字符串倒序
+  - 字符串长度
+  - 汉诺塔问题
+  - 全排列问题
+  - N皇后问题
+  - 走迷宫问题
+
