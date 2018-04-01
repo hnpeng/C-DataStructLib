@@ -7,6 +7,7 @@
 #include "TestCase/DLinkListCase.h"
 #include "TestCase/SeqStackCase.h"
 #include "TestCase/LinkStackCase.h"
+#include "TestCase/LittleAlgorithmCase.h"
 
 int main()
 {
@@ -16,7 +17,9 @@ int main()
 //    CircleListCase();
 //    DLinkListCase();
 //    SeqStackCase();
-    LinkStackCase();
+//    LinkStackCase();
+    LittleAlgorithmCase();
     printf("Hello World!\n");
+
     return 0;
 }

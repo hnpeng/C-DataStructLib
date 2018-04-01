@@ -7,6 +7,8 @@ My C language DataStruct LIB
   - StaticListCase
   - CircleListCase
   - DLinkListCase
+  - SeqStackCase
+  - LinkStackCase
 - SeqList（顺序表）
   - 顺序表的创建
   - 节点的插入
@@ -14,7 +16,7 @@ My C language DataStruct LIB
   - 节点的获取
   - 顺序表的长度
   - 顺序表的容量
-  - 顺序表的清空
+  - 顺序表的清空
   - 顺序表的销毁
   - 顺序表的反转
 - LinkList（单链表）
@@ -60,4 +62,28 @@ My C language DataStruct LIB
   - 游标前进
   - 游标后退
   - 游标复位
+- SeqStack （顺序存储结构栈）
+  - 创建栈
+  - 销毁栈
+  - 清空栈
+  - 进栈
+  - 出栈
+  - 获取栈顶元素
+  - 获取栈大小
+  - 获取栈容量
+- LinkStack （链式存储结构栈）
+  - 创建栈
+  - 销毁栈
+  - 清空栈
+  - 进栈
+  - 出栈
+  - 获取栈顶元素
+  - 获取栈大小
+- LittleAlgorithm （递归问题求解）
+  - 字符串倒序
+  - 字符串长度
+  - 汉诺塔问题
+  - 全排列问题
+  - N皇后问题
+  - 走迷宫问题
 

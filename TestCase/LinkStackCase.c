@@ -18,7 +18,7 @@ void LinkStackCase()
 
     printf("top = %d\n", *(int*)LinkStack_Top(stack));
 
-    LinkStack_Clear(stack);
+//    LinkStack_Clear(stack);
     while (LinkStack_Size(stack) > 0) {
         printf("pop = %d\n", *(int*)LinkStack_Pop(stack));
     }
