@@ -10,6 +10,7 @@
 #include "TestCase/LittleAlgorithmCase.h"
 #include "TestCase/SeqQueueCase.h"
 #include "TestCase/LinkQueueCase.h"
+#include "TestCase/SQueueCase.h"
 
 int main()
 {
@@ -22,7 +23,8 @@ int main()
 //    LinkStackCase();
 //    LittleAlgorithmCase();
 //    SeqQueueCase();
-    LinkQueueCase();
+//    LinkQueueCase();
+    SQueueCase();
     printf("Hello World!\n");
 
     return 0;
