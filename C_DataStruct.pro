@@ -14,6 +14,7 @@ include(LinkStack/LinkStack.pri)
 include(LittleAlgorithm/LittleAlgorithm.pri)
 include(SeqQueue/SeqQueue.pri)
 include(LinkQueue/LinkQueue.pri)
+include(SQueue/SQueue.pri)
 
 SOURCES += main.c
 
