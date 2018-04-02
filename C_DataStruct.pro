@@ -12,6 +12,8 @@ include(DLinkList/DLinkList.pri)
 include(SeqStack/SeqStack.pri)
 include(LinkStack/LinkStack.pri)
 include(LittleAlgorithm/LittleAlgorithm.pri)
+include(SeqQueue/SeqQueue.pri)
+include(LinkQueue/LinkQueue.pri)
 
 SOURCES += main.c
 
