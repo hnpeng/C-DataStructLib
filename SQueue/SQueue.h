@@ -17,4 +17,6 @@ void* SQueue_Retrieve(SQueue* queue);
 
 void* SQueue_Header(SQueue* queue);
 
+void* SQueue_MaxAddress(SQueue* queue);
+
 #endif

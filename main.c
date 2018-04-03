@@ -25,8 +25,8 @@ int main()
 //    LittleAlgorithmCase();
 //    SeqQueueCase();
 //    LinkQueueCase();
-//    SQueueCase();
-    SStackCase();
+    SQueueCase();
+//    SStackCase();
     printf("Hello World!\n");
 
     return 0;
