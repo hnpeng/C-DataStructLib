@@ -12,6 +12,8 @@ My C language DataStruct LIB
   - LittleAlgorithmCase
   - SeqQueueCase
   - LinkQueueCase
+  - SQueueCase
+  - SStackCase
 - SeqList（顺序表）
   - 顺序表的创建 时间复杂度O(1)
   - 节点的插入   时间复杂度O(n)
@@ -114,4 +116,12 @@ My C language DataStruct LIB
   - 出队列 O(1)
   - 获取队头元素 O(1)
   - 获取队列长度 O(1)
+- SStack （两个队列实现栈）
+  - 创建栈 O(1)
+  - 销毁栈 O(n)
+  - 清空栈 O(n)
+  - 进栈 O(1)
+  - 出栈 O(n)
+  - 获取栈顶元素 O(n)
+  - 获取栈大小 O(1)
 
