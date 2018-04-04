@@ -84,7 +84,7 @@ My C language DataStruct LIB
   - 出栈 O(1)
   - 获取栈顶元素 O(1)
   - 获取栈大小 O(1)
-- LittleAlgorithm （递归问题求解）
+- RecursiveAlgorithm （递归问题求解）
   - 字符串倒序
   - 字符串长度
   - 汉诺塔问题

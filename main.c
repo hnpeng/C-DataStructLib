@@ -7,7 +7,7 @@
 #include "TestCase/DLinkListCase.h"
 #include "TestCase/SeqStackCase.h"
 #include "TestCase/LinkStackCase.h"
-#include "TestCase/LittleAlgorithmCase.h"
+#include "TestCase/RecursiveAlgorithmCase.h"
 #include "TestCase/SeqQueueCase.h"
 #include "TestCase/LinkQueueCase.h"
 #include "TestCase/SQueueCase.h"
@@ -22,10 +22,10 @@ int main()
 //    DLinkListCase();
 //    SeqStackCase();
 //    LinkStackCase();
-//    LittleAlgorithmCase();
+    RecursiveAlgorithmCase();
 //    SeqQueueCase();
 //    LinkQueueCase();
-    SQueueCase();
+//    SQueueCase();
 //    SStackCase();
     printf("Hello World!\n");
 

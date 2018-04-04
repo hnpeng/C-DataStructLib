@@ -1,10 +1,11 @@
-#include "LittleAlgorithm/LittleAlgorithm.h"
+#include "RecursiveAlgorithmCase.h"
 
 #include <stdio.h>
-#include "LittleAlgorithm/Queen.h"
-#include "LittleAlgorithm/Labyrinth.h"
+#include "RecursiveAlgorithm/LittleAlgorithm.h"
+#include "RecursiveAlgorithm/Queen.h"
+#include "RecursiveAlgorithm/Labyrinth.h"
 
-void LittleAlgorithmCase()
+void RecursiveAlgorithmCase()
 {
     char* ss = "abcdefg";
     char sa[] = "abc";
