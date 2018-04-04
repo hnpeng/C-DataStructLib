@@ -9,7 +9,8 @@ HEADERS += $$PWD/SeqListCase.h \
     $$PWD/SeqQueueCase.h \
     $$PWD/LinkQueueCase.h \
     $$PWD/SQueueCase.h \
-    $$PWD/SStackCase.h
+    $$PWD/SStackCase.h \
+    $$PWD/SortAlgorithmCase.h
 
 SOURCES += $$PWD/SeqListCase.c \
     $$PWD/LinkListCase.c \
@@ -22,4 +23,5 @@ SOURCES += $$PWD/SeqListCase.c \
     $$PWD/SeqQueueCase.c \
     $$PWD/LinkQueueCase.c \
     $$PWD/SQueueCase.c \
-    $$PWD/SStackCase.c
+    $$PWD/SStackCase.c \
+    $$PWD/SortAlgorithmCase.c

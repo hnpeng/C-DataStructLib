@@ -12,6 +12,7 @@
 #include "TestCase/LinkQueueCase.h"
 #include "TestCase/SQueueCase.h"
 #include "TestCase/SStackCase.h"
+#include "TestCase/SortAlgorithmCase.h"
 
 int main()
 {
@@ -22,11 +23,12 @@ int main()
 //    DLinkListCase();
 //    SeqStackCase();
 //    LinkStackCase();
-    RecursiveAlgorithmCase();
+//    RecursiveAlgorithmCase();
 //    SeqQueueCase();
 //    LinkQueueCase();
 //    SQueueCase();
 //    SStackCase();
+    SortAlgorithmCase();
     printf("Hello World!\n");
 
     return 0;
