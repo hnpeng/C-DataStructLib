@@ -13,6 +13,7 @@
 #include "TestCase/SQueueCase.h"
 #include "TestCase/SStackCase.h"
 #include "TestCase/SortAlgorithmCase.h"
+#include "TestCase/GTreeCase.h"
 
 int main()
 {
@@ -28,7 +29,8 @@ int main()
 //    LinkQueueCase();
 //    SQueueCase();
 //    SStackCase();
-    SortAlgorithmCase();
+//    SortAlgorithmCase();
+//    GTreeCase();
     printf("Hello World!\n");
 
     return 0;
