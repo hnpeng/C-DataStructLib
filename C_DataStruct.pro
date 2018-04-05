@@ -15,8 +15,9 @@ include(RecursiveAlgorithm/RecursiveAlgorithm.pri)
 include(SeqQueue/SeqQueue.pri)
 include(LinkQueue/LinkQueue.pri)
 include(SQueue/SQueue.pri)
-include(SStack/SStack.pri) \
+include(SStack/SStack.pri) 
 include(SortAlgorithm/SortAlgorithm.pri)
+include(GTree/GTree.pri)
 
 SOURCES += main.c
 
