@@ -164,7 +164,7 @@ static int recursive_height(GTreeNode* node)
     return ret;
 }
 
-int GTree_Hight(GTree* tree)
+int GTree_Height(GTree* tree)
 {
     LinkList* list = (LinkList*)tree;
     int ret = -1;

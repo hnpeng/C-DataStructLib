@@ -18,6 +18,7 @@ include(SQueue/SQueue.pri)
 include(SStack/SStack.pri) 
 include(SortAlgorithm/SortAlgorithm.pri)
 include(GTree/GTree.pri)
+include(BTree/BTree.pri)
 
 SOURCES += main.c
 

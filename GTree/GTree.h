@@ -22,7 +22,7 @@ int GTree_Count(GTree* tree);
 
 GTreeData* GTree_Root(GTree* tree);
 
-int GTree_Hight(GTree* tree);
+int GTree_Height(GTree* tree);
 
 int GTree_Degree(GTree* tree);
 

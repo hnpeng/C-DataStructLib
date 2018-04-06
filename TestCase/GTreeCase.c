@@ -28,7 +28,7 @@ void GTreeCase()
 //    printf("delete = %s\n", GTree_Get(tree, 7));
 //    printf("delete = %c\n", (char)GTree_Delete(tree, 8));
     printf("degree = %d\n", GTree_Degree(tree));
-    printf("hight = %d\n", GTree_Hight(tree));
+    printf("hight = %d\n", GTree_Height(tree));
 
     GTree_Search(tree, (void*)'j', printGTreeData);
 
