@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <LinkQueue/LinkQueue.h>
 
 typedef struct
 {
@@ -275,5 +276,186 @@ void BTree_Display(BTree* tree, PrintFunc printFunc)
 
     if (btree != NULL) {
         recursive_display(btree->root, 0, printFunc);
+    }
+}
+
+static void pre_order_traversal(BTreeNode* root, PrintFunc pFunc)
+{
+    if (root != NULL && pFunc != NULL) {
+        pFunc(root);
+        printf(" ");
+        pre_order_traversal(root->leftNode, pFunc);
+        pre_order_traversal(root->rightNode, pFunc);
+    }
+}
+
+void BTree_PreOrderTraversal(BTree* tree, PrintFunc pFunc)
+{
+    TBTree* btree = (TBTree*)tree;
+
+    if (btree != NULL) {
+        pre_order_traversal(btree->root, pFunc);
+    }
+}
+
+static void mid_order_traversal(BTreeNode* root, PrintFunc pFunc)
+{
+    if (root != NULL) {
+        mid_order_traversal(root->leftNode, pFunc);
+        pFunc(root);
+        printf(" ");
+        mid_order_traversal(root->rightNode, pFunc);
+    }
+}
+
+void BTree_MidOrderTraversal(BTree* tree, PrintFunc pFunc)
+{
+    TBTree* btree = (TBTree*)tree;
+
+    if (btree != NULL) {
+        mid_order_traversal(btree->root, pFunc);
+    }
+}
+
+static void post_order_traversal(BTreeNode* root, PrintFunc pFunc)
+{
+    if (root != NULL) {
+        post_order_traversal(root->leftNode, pFunc);
+        post_order_traversal(root->rightNode, pFunc);
+        pFunc(root);
+        printf(" ");
+    }
+}
+
+void BTree_PostOrderTraversal(BTree* tree, PrintFunc pFunc)
+{
+    TBTree* btree = (TBTree*)tree;
+
+    if (btree != NULL) {
+        post_order_traversal(btree->root, pFunc);
+    }
+}
+
+void BTree_LevelOrderTraversal(BTree* tree, PrintFunc pFunc)
+{
+    TBTree* btree = (TBTree*)tree;
+
+    if (btree != NULL && btree->root != NULL) {
+        LinkQueue* queue = LinkQueue_Create();
+
+        LinkQueue_Append(queue, btree->root);
+
+        while (LinkQueue_Length(queue) > 0) {
+            BTreeNode* node = (BTreeNode*)LinkQueue_Retrieve(queue);
+            pFunc(node);
+            printf(" ");
+
+            if (node->leftNode != NULL) {
+                LinkQueue_Append(queue, node->leftNode);
+            }
+
+            if (node->rightNode != NULL) {
+                LinkQueue_Append(queue, node->rightNode);
+            }
+        }
+
+        LinkQueue_Destroy(queue);
+    }
+}
+
+static void thread_via_left(BTreeNode* root, BTreeNode** pp)
+{
+    if (root != NULL && pp != NULL) {
+        if (*pp != NULL) {
+            (*pp)->leftNode = root;
+            *pp = NULL;
+        }
+
+        if (root->leftNode == NULL) {
+            *pp = root;
+        }
+
+        thread_via_left(root->leftNode, pp);
+        thread_via_left(root->rightNode, pp);
+    }
+}
+
+void BTree_ThreadViaLeft(BTree *tree)
+{
+    TBTree* btree = (TBTree*)tree;
+
+    if (btree != NULL) {
+
+        BTreeNode* p = NULL;
+        thread_via_left(btree->root, &p);
+    }
+}
+
+static void thread_via_pre(BTreeNode* root, LinkList* list)
+{
+    if (root != NULL && list != NULL) {
+        LinkList_Insert(list, root, LinkList_Length(list));
+        thread_via_pre(root->leftNode, list);
+        thread_via_pre(root->rightNode, list);
+    }
+}
+
+void BTree_ThreadViaPre(BTree *tree, LinkList *list)
+{
+    TBTree* btree = (TBTree*)tree;
+
+    if (tree != NULL && list != NULL) {
+        thread_via_pre(btree->root, list);
+    }
+}
+
+static int compare_bin_tree(BTreeNode* bt1, BTreeNode* bt2, CompareValFunc isValEqualFucn)
+{
+    int ret = 1;
+
+    if (bt1 != NULL || bt2 != NULL) {
+        ret = isValEqualFucn(bt1, bt2) &&
+                compare_bin_tree(bt1->leftNode, bt2->leftNode, isValEqualFucn) &&
+                compare_bin_tree(bt1->rightNode, bt2->rightNode, isValEqualFucn);
+    }
+
+    return ret;
+}
+
+int BTree_Compare(BTree *tree1, BTree *tree2, CompareValFunc isValEqualFunc)
+{
+    TBTree* bt1 = (TBTree*)tree1;
+    TBTree* bt2 = (TBTree*)tree2;
+    int ret = bt1 != NULL && bt2 != NULL;
+
+    if (ret) {
+        ret = compare_bin_tree(bt1->root, bt2->root, isValEqualFunc);
+    }
+
+    return ret;
+}
+
+static void deleteSingleDegree(BTreeNode** root)
+{
+    if (*root != NULL) {
+        deleteSingleDegree(&(*root)->leftNode);
+        deleteSingleDegree(&(*root)->rightNode);
+
+        if ((*root)->leftNode == NULL && (*root)->rightNode != NULL) {
+            (*root) = (*root)->rightNode;
+        }
+
+        if ((*root)->leftNode != NULL && (*root)->rightNode == NULL) {
+            (*root) = (*root)->leftNode;
+        }
+    }
+}
+
+void BTree_DeleteSingleDegree(BTree *tree)
+{
+    TBTree* btree = (TBTree*)tree;
+
+    if (btree != NULL) {
+        deleteSingleDegree(&btree->root);
     }
 }
