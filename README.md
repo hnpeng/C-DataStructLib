@@ -1,5 +1,5 @@
 # C-DataStructLib
-My C language DataStruct LIB
+My C language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple Clang
 
 - TestCase （测试用例）- 测试驱动开发方式
   - SeqListCase
@@ -164,3 +164,16 @@ My C language DataStruct LIB
   - 线索化二叉树 O(n)
   - 比较两颗二叉树是否相等 O(n)
   - 单度节点的删除 O(n)
+- MGraph（邻接矩阵法图结构）
+  - 图的创建 O(n)
+  - 图的清空 O(n^2)
+  - 图的销毁 O(1)
+  - 加入边 O(1)
+  - 删除边 O(1)
+  - 获取边的权值 O(1)
+  - 获取边的度数 O(n)
+  - 获取节点数 O(1)
+  - 获取图的边数 O(n^2)
+  - 打印图 O(n^2)
+## Keep in touch.
+> QQ553620248 or WeChat17727536673
