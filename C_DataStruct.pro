@@ -20,6 +20,7 @@ include(SortAlgorithm/SortAlgorithm.pri)
 include(GTree/GTree.pri)
 include(BTree/BTree.pri)
 include(MGraph/MGraph.pri)
+include(LGraph/LGraph.pri)
 
 SOURCES += main.c
 
