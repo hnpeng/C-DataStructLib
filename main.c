@@ -35,8 +35,8 @@ int main()
 //    SortAlgorithmCase();
 //    GTreeCase();
 //    BTreeCase();
-//    MGraphCase();
-    LGraphCase();
+    MGraphCase();
+//    LGraphCase();
 
     printf("Hello World!\n");
 

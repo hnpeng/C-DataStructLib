@@ -175,6 +175,8 @@ My C language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple Clang
   - 获取节点数 O(1)
   - 获取图的边数 O(n^2)
   - 打印图 O(n^2)
+  - 图的深度优先遍历(DFS) O(n)
+  - 图的广度优先遍历(BFS) O(n)
 - LGraph（邻接链表法图结构）
   - 图的创建 O(n)
   - 图的清空 O(n^2)
@@ -186,5 +188,7 @@ My C language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple Clang
   - 获取节点数 O(1)
   - 获取图的边数 O(n)
   - 打印图 O(n^3)
+  - 图的深度优先遍历(DFS) O(n)
+  - 图的广度优先遍历(BFS) O(n)
 ## Keep in touch.
 > QQ553620248 or WeChat17727536673

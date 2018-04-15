@@ -1,6 +1,7 @@
 #include "LGraph.h"
 
 #include "LinkList/LinkList.h"
+#include "LinkQueue/LinkQueue.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -243,4 +244,87 @@ void LGraph_Display(LGraph* graph, PFunc* pFunc)
         }
         printf("\n");
     }
+}
+
+static void recursive_dfs(TLGraph* tGraph, int v, int* validArr, PFunc* pFunc)
+{
+    pFunc(tGraph->v[v]);
+    printf("\t");
+    validArr[v] = 1;
+    int i;
+
+    for (i=0; i<LinkList_Length(tGraph->listArr[v]); i++) {
+        TListNode* node = LinkList_Get(tGraph->listArr[v], i);
+
+        if (!validArr[node->v]) {
+            recursive_dfs(tGraph, node->v, validArr, pFunc);
+        }
+    }
+
+}
+
+void LGraph_DFS(LGraph *graph, PFunc *pFunc)
+{
+    TLGraph* tGraph = (TLGraph*)graph;
+    int* validArr = (int*)calloc(tGraph->count, sizeof(int));
+
+    if (tGraph != NULL && pFunc != NULL && validArr != NULL) {
+        int i;
+
+        recursive_dfs(tGraph, 0, validArr, pFunc);
+
+        for (i=0; i<tGraph->count; i++) {
+            if (!validArr[i]) {
+                recursive_dfs(tGraph, i, validArr, pFunc);
+            }
+        }
+    }
+    printf("\n");
+
+    free(validArr);
+}
+
+static void bfs(TLGraph* tGraph, int v, int validArr[], PFunc* pFunc)
+{
+    LinkQueue* queue = LinkQueue_Create();
+    int i;
+
+    LinkQueue_Append(queue, tGraph->v + v);
+    validArr[v] = 1;
+
+    while (LinkQueue_Length(queue) > 0) {
+        int n = (LVertex*)LinkQueue_Retrieve(queue) - tGraph->v;
+        pFunc(tGraph->v[n]);
+        printf("\t");
+
+        for (i=0; i<LinkList_Length(tGraph->listArr[n]); i++) {
+            TListNode* node = (TListNode*)LinkList_Get(tGraph->listArr[n], i);
+
+            if (!validArr[node->v]) {
+                LinkQueue_Append(queue, node->v + tGraph->v);
+                validArr[node->v] = 1;
+            }
+
+        }
+    }
+
+    LinkQueue_Destroy(queue);
+}
+
+void LGraph_BFS(LGraph *graph, PFunc *pFunc)
+{
+    TLGraph* tGraph = (TLGraph*)graph;
+    int* validArr = (int*)calloc(tGraph->count, sizeof(int));
+    int i;
+
+    if (tGraph != NULL && pFunc != NULL) {
+        bfs(tGraph, 0, validArr, pFunc);
+
+        for (i=0; i<tGraph->count; i++) {
+            if (!validArr[i])
+                bfs(tGraph, i, validArr, pFunc);
+        }
+        printf("\n");
+    }
+    free(validArr);
 }

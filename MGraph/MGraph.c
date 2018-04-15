@@ -1,5 +1,6 @@
 #include "MGraph.h"
 
+#include "LinkQueue/LinkQueue.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -192,4 +193,91 @@ void MGraph_Display(MGraph *graph, PFunc* pFunc)
             }
         }
     }
+}
+
+static void recursive_dfs(TMGraph* tGraph, int v, int validArr[], PFunc* pFunc)
+{
+    int i;
+    pFunc(tGraph->v[v]);
+    printf("\t");
+    validArr[v] = 1;
+
+    for (i=0; i<tGraph->count; i++) {
+        if (!validArr[i] && tGraph->matrix[v][i] != 0) {
+            recursive_dfs(tGraph, i, validArr, pFunc);
+        }
+    }
+}
+
+void MGraph_DFS(MGraph *graph, PFunc *pFunc)
+{
+    TMGraph* tGraph = (TMGraph*)graph;
+    int* validArr;
+    int condiction = tGraph != NULL;
+
+    condiction = condiction && pFunc != NULL;
+    condiction = condiction && ((validArr = (int*)calloc(tGraph->count, sizeof(int))) != NULL);
+
+    if (condiction) {
+        int i;
+        recursive_dfs(tGraph, 0, validArr, pFunc);
+
+        for (i=0; i<tGraph->count; i++) {
+            if (!validArr[i]) {
+                recursive_dfs(tGraph, i, validArr, pFunc);
+            }
+        }
+        printf("\n");
+    }
+
+    free(validArr);
+}
+
+static void bfs(TMGraph* tGraph, int v, int validArr[], PFunc* pFunc)
+{
+    LinkQueue* queue = LinkQueue_Create();
+
+    if (queue != NULL) {
+        int i;
+        LinkQueue_Append(queue, tGraph->v + v);
+        validArr[v] = 1;
+
+        while (LinkQueue_Length(queue) > 0) {
+            int n = (MVertex*)LinkQueue_Retrieve(queue) - tGraph->v;
+
+            pFunc(tGraph->v[n]);
+            printf("\t");
+
+            for (i=0; i<tGraph->count; i++) {
+                if (!validArr[i] && tGraph->matrix[n][i] != 0) {
+                    LinkQueue_Append(queue, tGraph->v + i);
+                    validArr[i] = 1;
+                }
+            }
+        }
+    }
+}
+
+void MGraph_BFS(MGraph *graph, PFunc *pFunc)
+{
+    TMGraph* tGraph = (TMGraph*)graph;
+    int condiction = tGraph != NULL && pFunc != NULL;
+    int* validArr;
+
+    condiction = condiction && (validArr = (int*)calloc(tGraph->count, sizeof(int))) != NULL;
+
+    if (condiction) {
+        int i;
+        bfs(tGraph, 0, validArr, pFunc);
+
+        for (i=0; i<tGraph->count; i++) {
+            if (!validArr[i]) {
+                bfs(tGraph, i, validArr, pFunc);
+            }
+        }
+
+        printf("\n");
+    }
+
+    free(validArr);
 }

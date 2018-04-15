@@ -26,4 +26,8 @@ int LGraph_EdgeCount(LGraph* graph);
 
 void LGraph_Display(LGraph* graph, PFunc* pFunc);
 
+void LGraph_DFS(LGraph* graph, PFunc* pFunc);
+
+void LGraph_BFS(LGraph* graph, PFunc* pFunc);
+
 #endif
