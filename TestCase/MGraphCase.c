@@ -10,7 +10,7 @@ void pFunc(MVertex v)
 
 void MGraphCase()
 {
-    MVertex v[5] = {"0", "1", "2", "3", "4"};
+    MVertex v[5] = {"A", "B", "C", "D", "E"};
     MGraph* graph = MGraph_Create(v, 5);
 
     MGraph_AddEdge(graph, 0, 1, 1);
@@ -18,6 +18,9 @@ void MGraphCase()
     MGraph_AddEdge(graph, 1, 2, 3);
     MGraph_AddEdge(graph, 2, 3, 4);
     MGraph_AddEdge(graph, 3, 4, 5);
+
+    MGraph_DFS(graph, pFunc);
+    MGraph_BFS(graph, pFunc);
 
     printf("count = %d\n", MGraph_VertexCount(graph));
     printf("edgeCout = %d\n", MGraph_EdgeCount(graph));

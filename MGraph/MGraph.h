@@ -26,4 +26,8 @@ int MGraph_EdgeCount(MGraph* graph);
 
 void MGraph_Display(MGraph* graph, PFunc* pFunc);
 
+void MGraph_DFS(MGraph* graph, PFunc* pFunc);
+
+void MGraph_BFS(MGraph* graph, PFunc* pFunc);
+
 #endif
