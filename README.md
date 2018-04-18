@@ -1,5 +1,5 @@
 # C-DataStructLib
-My C language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple Clang
+Reusable C language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple Clang
 
 - TestCase （测试用例）- 测试驱动开发方式
   - SeqListCase
@@ -190,5 +190,11 @@ My C language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple Clang
   - 打印图 O(n^3)
   - 图的深度优先遍历(DFS) O(n)
   - 图的广度优先遍历(BFS) O(n)
+- Prim（最小连通网）
+- Search（查找算法）
+  - 静态查找 O(n)
+  - 动态查找 O(n)
+  - 二分查找 O(logn)
+  - 插值查找 O(logn)
 ## Keep in touch.
 > QQ553620248 or WeChat17727536673
