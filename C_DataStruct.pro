@@ -23,6 +23,7 @@ include(MGraph/MGraph.pri)
 include(LGraph/LGraph.pri)
 include(Search/Search.pri)
 include(BSTree/BSTree.pri)
+include(Hash/Hash.pri)
 
 SOURCES += main.c
 

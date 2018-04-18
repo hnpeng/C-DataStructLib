@@ -19,7 +19,8 @@
 //#include "TestCase/LGraphCase.h"
 //#include "TestCase/PrimCase.h"
 //#include "TestCase/SearchCase.h"
-#include "TestCase/BSTreeCase.h"
+//#include "TestCase/BSTreeCase.h"
+#include "TestCase/HashCase.h"
 
 int main()
 {
@@ -43,7 +44,8 @@ int main()
 //    PrimCase(0);
 //    SearchCase();
 //    OthreCase();
-    BSTreeCase();
+//    BSTreeCase();
+    HashCase();
 
     printf("Hello World!\n");
 
