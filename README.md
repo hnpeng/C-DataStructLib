@@ -196,5 +196,17 @@ Reusable C language DataStruct LIB. Develop by QtCreator5.10.1 Compiler: Apple C
   - 动态查找 O(n)
   - 二分查找 O(logn)
   - 插值查找 O(logn)
+- BSTree（二叉排序树结构）
+  - 树的创建 O(1)
+  - 树的清空 O(1)
+  - 树的销毁 O(1)
+  - 节点的插入 O(n)
+  - 节点的删除 O(n)
+  - 节点的获取 O(n)
+  - 节点的个数 O(1)
+  - 获取根节点 O(1)
+  - 树的高度 O(n)
+  - 树的度 O(n)
+  - 打印树 O(n)
 ## Keep in touch.
 > QQ553620248 or WeChat17727536673

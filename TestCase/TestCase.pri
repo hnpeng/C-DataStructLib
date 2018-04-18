@@ -16,7 +16,8 @@ HEADERS += $$PWD/SeqListCase.h \
     $$PWD/MGraphCase.h \
     $$PWD/LGraphCase.h \
     $$PWD/PrimCase.h \
-    $$PWD/SearchCase.h
+    $$PWD/SearchCase.h \
+    $$PWD/BSTreeCase.h
 
 SOURCES += $$PWD/SeqListCase.c \
     $$PWD/LinkListCase.c \
@@ -36,4 +37,5 @@ SOURCES += $$PWD/SeqListCase.c \
     $$PWD/MGraphCase.c \
     $$PWD/LGraphCase.c \
     $$PWD/PrimCase.c \
-    $$PWD/SearchCase.c
+    $$PWD/SearchCase.c \
+    $$PWD/BSTreeCase.c
