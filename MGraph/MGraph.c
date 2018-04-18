@@ -1,6 +1,7 @@
 #include "MGraph.h"
 
 #include "LinkQueue/LinkQueue.h"
+#include "LinkStack/LinkStack.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -209,6 +210,33 @@ static void recursive_dfs(TMGraph* tGraph, int v, int validArr[], PFunc* pFunc)
     }
 }
 
+static void dfs(TMGraph* tGraph, int v, int validArr[], PFunc* pFunc)
+{
+    LinkStack* stack = LinkStack_Create();
+
+    if (stack != NULL) {
+        int i;
+        LinkStack_Push(stack, tGraph->v + v);
+        validArr[v] = 1;
+
+        while (LinkStack_Size(stack) > 0) {
+            int n = (MVertex*)LinkStack_Pop(stack) - tGraph->v;
+
+            pFunc(tGraph->v[n]);
+            printf("\t");
+
+            for (i=0; i<tGraph->count; i++) {
+                if (!validArr[i] && tGraph->matrix[n][i] != 0) {
+                    LinkStack_Push(stack, tGraph->v + i);
+                    validArr[i] = 1;
+                }
+            }
+        }
+    }
+
+    LinkStack_Destroy(stack);
+}
+
 void MGraph_DFS(MGraph *graph, PFunc *pFunc)
 {
     TMGraph* tGraph = (TMGraph*)graph;
@@ -220,11 +248,13 @@ void MGraph_DFS(MGraph *graph, PFunc *pFunc)
 
     if (condiction) {
         int i;
-        recursive_dfs(tGraph, 0, validArr, pFunc);
+//        recursive_dfs(tGraph, 0, validArr, pFunc);
+        dfs(tGraph, 0, validArr, pFunc);
 
         for (i=0; i<tGraph->count; i++) {
             if (!validArr[i]) {
-                recursive_dfs(tGraph, i, validArr, pFunc);
+//                recursive_dfs(tGraph, i, validArr, pFunc);
+                dfs(tGraph, i, validArr, pFunc);
             }
         }
         printf("\n");
@@ -256,6 +286,8 @@ static void bfs(TMGraph* tGraph, int v, int validArr[], PFunc* pFunc)
             }
         }
     }
+
+    LinkQueue_Destroy(queue);
 }
 
 void MGraph_BFS(MGraph *graph, PFunc *pFunc)

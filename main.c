@@ -17,6 +17,8 @@
 #include "TestCase/BTreeCase.h"
 #include "TestCase/MGraphCase.h"
 #include "TestCase/LGraphCase.h"
+#include "TestCase/PrimCase.h"
+#include "TestCase/SearchCase.h"
 
 int main()
 {
@@ -35,8 +37,11 @@ int main()
 //    SortAlgorithmCase();
 //    GTreeCase();
 //    BTreeCase();
-    MGraphCase();
+//    MGraphCase();
 //    LGraphCase();
+//    PrimCase(0);
+//    SearchCase();
+    OthreCase();
 
     printf("Hello World!\n");
 
